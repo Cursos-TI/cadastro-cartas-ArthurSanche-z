@@ -10,27 +10,29 @@ int main() {
     char  estado_carta1;
     char  codigo_carta1[5];       
     char  cidade_carta1[50];      
-    int   populacao_carta1;
+    // População agora é unsigned long int para acomodar números maiores
+    unsigned long int populacao_carta1;
     float area_carta1;
     float pib_carta1;
     int   pontos_turisticos_carta1;
   // Variáveis para os resultados calculados
     float densidade_populacional1;
     float pib_per_capita1;
-
+    float super_poder1;
   // Declaração das Variáveis para a Carta 2 
 
     char  estado_carta2;
     char  codigo_carta2[5];
     char  cidade_carta2[50];
-    int   populacao_carta2;
+    unsigned long int populacao_carta2;
     float area_carta2;
     float pib_carta2;
     int   pontos_turisticos_carta2;
   // Variáveis para os resultados calculados
     float densidade_populacional2;
     float pib_per_capita2;
-
+    float super_poder2;
+    
     // Área para entrada de dados
 
   // Seção de Entrada de Dados da Carta 1 
@@ -47,7 +49,8 @@ int main() {
     scanf("%s", cidade_carta1); 
 
     printf("Digite a Populacao: \n");
-    scanf("%d", &populacao_carta1);
+    // Usar %lu para ler um unsigned long int
+    scanf("%lu", &populacao_carta1);
 
     printf("Digite a Area (em km2): \n");
     scanf("%f", &area_carta1);
@@ -72,7 +75,7 @@ int main() {
     scanf("%s", cidade_carta2);
 
     printf("Digite a Populacao: \n");
-    scanf("%d", &populacao_carta2);
+    scanf("%lu", &populacao_carta2);
 
     printf("Digite a Area (em km2): \n");
     scanf("%f", &area_carta2);
@@ -99,7 +102,37 @@ int main() {
   
     pib_per_capita2 = (pib_carta2 * 1000000000.0) / populacao_carta2;
 
-  // Área para exibição dos dados da cidade
+    
+  //  Seção de Comparação 
+    // Variáveis para guardar o resultado (1 se carta 1 vence, 0 se carta 2 vence)
+    int vitoria_populacao, vitoria_area, vitoria_pib, vitoria_turismo,
+        vitoria_densidade, vitoria_per_capita, vitoria_super_poder;
+
+
+    vitoria_populacao = (populacao_carta1 > populacao_carta2) ? 1 : 0;
+    vitoria_area = (area_carta1 > area_carta2) ? 1 : 0;
+    vitoria_pib = (pib_carta1 > pib_carta2) ? 1 : 0;
+    vitoria_turismo = (pontos_turisticos_carta1 > pontos_turisticos_carta2) ? 1 : 0;
+    // Atenção: para densidade, o MENOR valor vence!
+    vitoria_densidade = (densidade_populacional1 < densidade_populacional2) ? 1 : 0;
+    vitoria_per_capita = (pib_per_capita1 > pib_per_capita2) ? 1 : 0;
+    vitoria_super_poder = (super_poder1 > super_poder2) ? 1 : 0;
+
+
+    //  Seção de Exibição dos Resultados da Comparação 
+    printf("\n\n Comparacao de Cartas \n");
+
+    // Para cada atributo, exibimos qual carta venceu e o resultado numérico (1 ou 0)
+    printf("Populacao: Carta %d venceu (%d)\n", (vitoria_populacao ? 1 : 2), vitoria_populacao);
+    printf("Area: Carta %d venceu (%d)\n", (vitoria_area ? 1 : 2), vitoria_area);
+    printf("PIB: Carta %d venceu (%d)\n", (vitoria_pib ? 1 : 2), vitoria_pib);
+    printf("Pontos Turisticos: Carta %d venceu (%d)\n", (vitoria_turismo ? 1 : 2), vitoria_turismo);
+    printf("Densidade Populacional: Carta %d venceu (%d)\n", (vitoria_densidade ? 1 : 2), vitoria_densidade);
+    printf("PIB per Capita: Carta %d venceu (%d)\n", (vitoria_per_capita ? 1 : 2), vitoria_per_capita);
+    printf("Super Poder: Carta %d venceu (%d)\n", (vitoria_super_poder ? 1 : 2), vitoria_super_poder);
+
+  
+    // Área para exibição dos dados da cidade
     
     printf("\n\n DADOS FINAIS DAS CARTAS \n");
 
@@ -108,7 +141,7 @@ int main() {
     printf("Estado: %c\n", estado_carta1);
     printf("Codigo: %s\n", codigo_carta1);
     printf("Nome da Cidade: %s\n", cidade_carta1);
-    printf("Populacao: %d\n", populacao_carta1);
+    printf("Populacao: %lu\n", populacao_carta1);
     printf("Area: %.2f km2\n", area_carta1); 
     printf("PIB: %.2f bilhoes de reais\n", pib_carta1);
     printf("Numero de Pontos Turisticos: %d\n", pontos_turisticos_carta1);
@@ -121,7 +154,7 @@ int main() {
     printf("Estado: %c\n", estado_carta2);
     printf("Codigo: %s\n", codigo_carta2);
     printf("Nome da Cidade: %s\n", cidade_carta2);
-    printf("Populacao: %d\n", populacao_carta2);
+    printf("Populacao: %lu\n", populacao_carta2);
     printf("Area: %.2f km2\n", area_carta2);
     printf("PIB: %.2f bilhoes de reais\n", pib_carta2);
     printf("Numero de Pontos Turisticos: %d\n", pontos_turisticos_carta2);
