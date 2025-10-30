@@ -10,7 +10,7 @@ int main(void) {
     char  pais_carta1[] = "Brasil";
     unsigned long int populacao_carta1 = 215300000;
     float area_carta1 = 8516000.0;
-    float pib_carta1 = 1.608; // Em trilhões de USD
+    float pib_carta1 = 1.608; // Em trilhões de Reais
     int   pontos_turisticos_carta1 = 150;
     float densidade_demografica1;
 
@@ -18,7 +18,7 @@ int main(void) {
     char  pais_carta2[] = "Argentina";
     unsigned long int populacao_carta2 = 45810000;
     float area_carta2 = 2780000.0;
-    float pib_carta2 = 0.487; // Em trilhões de USD
+    float pib_carta2 = 0.487; // Em trilhões de Reais
     int   pontos_turisticos_carta2 = 80;
     float densidade_demografica2;
 
@@ -87,7 +87,7 @@ int main(void) {
         case 3:
             attr1_score_c1 = score_pib1; attr1_score_c2 = score_pib2;
             attr1_display_c1 = pib_carta1; attr1_display_c2 = pib_carta2;
-            strcpy(attr1_nome, "PIB"); strcpy(attr1_unidade, "trilhoes USD");
+            strcpy(attr1_nome, "PIB"); strcpy(attr1_unidade, "trilhoes R$");
             break;
         case 4:
             attr1_score_c1 = score_turismo1; attr1_score_c2 = score_turismo2;
@@ -114,7 +114,7 @@ int main(void) {
     // Se 'escolha1' NÃO for 1, imprime a opção 1. Senão, não imprime nada ("").
     printf(escolha1 != 1 ? "1. Populacao\n" : "");
     printf(escolha1 != 2 ? "2. Area\n" : "");
-    printf(escolha1 != 3 ? "3. PIB (em trilhoes de USD)\n" : "");
+    printf(escolha1 != 3 ? "3. PIB (em trilhoes de R$)\n" : "");
     printf(escolha1 != 4 ? "4. Pontos Turisticos\n" : "");
     printf(escolha1 != 5 ? "5. Densidade Demografica (menor vence)\n" : "");
     printf("--------------------------------------------\n");
@@ -142,7 +142,7 @@ int main(void) {
         case 3:
             attr2_score_c1 = score_pib1; attr2_score_c2 = score_pib2;
             attr2_display_c1 = pib_carta1; attr2_display_c2 = pib_carta2;
-            strcpy(attr2_nome, "PIB"); strcpy(attr2_unidade, "trilhoes USD");
+            strcpy(attr2_nome, "PIB"); strcpy(attr2_unidade, "trilhoes R$");
             break;
         case 4:
             attr2_score_c1 = score_turismo1; attr2_score_c2 = score_turismo2;
